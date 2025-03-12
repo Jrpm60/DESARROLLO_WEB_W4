@@ -1,0 +1,16 @@
+--------------------------
+|        ROPA             |
+|                         |
+---------------------------
+|      - COLOR            |
+|      - TALLA            |
+|      - AJUSTE           |
+|      - MATERIAL         |
+|                         |
+---------------------------
+|   - probar              |
+|   - sacar a tienda      |
+|   - llevar a almacen    |
+|   - aplicar descuento   |
+|                         |
+---------------------------

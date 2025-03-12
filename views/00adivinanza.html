@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADIVINANZA</title>
+    <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+</head>
+
+<body>   
+
+    <header>
+        <h1> Bienvenido al juego de adivinar !</h1>
+        <h2>¿Que tiene patas , pero no puede caminar?</h2>
+    </header>
+
+        <a href="/querystring?nombre=Juan&edad=12&pais=Chile">click me please</a>
+        <br></br>
+
+        <!--  Formulario de validacion de usuario-->
+
+    <form action="/ADIVINANZA" method="POST">
+        <div>
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" >
+        </div>
+
+        <div>
+
+            <label for="usuario">Tu Usuario</label>
+            <input type="text" name="usuario" id="usuario">
+        </div>
+
+        <div>
+            <label for="password">Tu contraseña</label>
+            <input type="password" name="password" id="password" >
+        </div>
+
+        <div>
+            <label for="password1">Repite Tu contraseña</label>
+            <input type="password" name="password1" id="password1" >
+        </div>
+        
+        <input type="submit">
+    </form>
+
+        
+    <section class="section-container"></section>>
+
+        <form action="/win" method="get">
+            <div class="gallery-item">
+            <img id="silla" src="/images/silla.PNG" alt="Silla">
+            <button type="submit" name="answer" value="correct" > Una Silla</button>
+            </div>
+        </form>
+
+        <form action="/lose" method="get">
+            <div class="gallery-item">
+            <img id= "perro" src="/images/perro.PNG" alt="Perro">
+            <button type="submit" name="answer" value="incorrect" > Un perro</button>
+            </div>
+        </form>
+
+        <form action="/lose" method="get">
+            <div class="gallery-item">
+            <img id="elefante" src="/images/elefante.PNG" alt="Elefante">
+            <button type="submit" name="answer" value="incorrect" > Un elefante</button>
+            </div>
+        </form>
+    </section>
+
+    <footer> 
+        <h1>Para adivinar el acertijo.... ¡ Haz click en la respuesta! </h1>
+
+    </footer>
+
+</body>
+</html>

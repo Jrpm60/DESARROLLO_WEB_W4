@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guitarra</title>
+</head>
+<body>
+    <h1> TIENDA DE ROPA </h1>
+
+
+    <button onclick="sacarExposicion()";>Sacar a Exposicion</button>
+
+    <script type="module">
+        import {ropa} from './Ropa.js'
+
+    function sacarExposicion() {
+        const marca = document.getElementById('marca').value;
+        const cuerdas = document.getElementById('cuerdas').value;
+        const g = new Guitarra (marca, cuerdas) ;
+        alert(g.tocar());
+    }
+    window.tocarLaGuitarra=tocarLaGuitarra;
+    
+    </script>
+    
+</body>
+</html>

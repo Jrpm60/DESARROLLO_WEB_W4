@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Loop Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      padding: 8px;
+      background-color: #f4f4f4;
+      margin-bottom: 5px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Numeros 1 a 10</h1>
+  <ul id="number-list"></ul>
+
+  <div class="item">Item 1</div>
+  <div class="item">Item 2</div>
+  <div class="item">Item 3</div>
+  <div class="item">Item 4</div>
+  <button onclick="cambiarColor();">Aplicar</button>
+
+
+  <script>
+    // Obtener el contenedor donde se colocarán los números
+    const numberList = document.getElementById("number-list");
+
+    // Usar un for loop de 1 a 10:
+      // dentro de cada bucle, hacer:
+    
+      for (let index = 1; index < 11; index++) {
+                     
+        const listItem = document.createElement("li");   // crear el elemento <li>
+        listItem.textContent = index;  // asignar un valor
+        numberList.appendChild(listItem);  // Agregar el elemento a la lista
+            
+        }
+
+  </script>
+    
+
+  <script>
+    function cambiarColor() {
+        const elements = document.getElementsByClassName("item");
+
+        elemnts = Array.from(elements);
+        elements.sort();
+        console.log(typeof elemnts);
+        for (let index = 0; index < elements.length; index++) {
+            const element = elements[index];
+            console.log(element.innerHTML); 
+            element.style.color= "blue";          
+        }
+    }
+  </script>
+
+
+</body>
+</html>

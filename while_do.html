@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While Loop Example</title>
+</head>
+<body>
+    <h2>Mostrar numeros con un bucle WHILE</h2>
+    <div id="number-list"></div>
+
+    <script>
+        // mostrar 1 - en orden, al reves, solo 3 y 4
+
+        let numeros = [
+            {numero: 1 , texto: "bat"},
+            {numero: 2 , texto: "bi"},
+            {numero: 3 , texto: "iru"},
+            {numero: 4 , texto: "lau"},
+            {numero: 5 , texto: "bost"},
+        ]
+
+
+        numeros.reverse(); 
+
+        numeros = numeros.filter(el => [3,4].includes(el.numero));
+        
+        let output = '';
+        
+        numeros.forEach(element=> {
+            output += '<p>Number: ' + element.numero + '-' + element.texto + '</p>';
+        });
+          
+        document.getElementById("number-list").innerHTML = output; // insertar el resultado en el elemento HTML
+
+
+
+
+        /* let number = 1;  // Empezar
+        let output = '';  // Crear una variable para guardar el resultado
+
+        // Usar bucle while para mostrar los numeros 1 a 5 dentro de una etiqueta <p>
+
+        while (count <= 5) {        
+            output += '<p>Number: ' + number + '</p>';  // Crear un <p> para cada número
+            count ++
+        }
+
+        // Insertar el resultado en el elemento HTML
+        document.getElementById("number-list").innerHTML = output; */
+
+    </script>
+</body>
+</html>
