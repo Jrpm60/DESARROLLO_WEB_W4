@@ -1,6 +1,7 @@
 import express from 'express'
 import path from 'path';
-import { fileURLToPath } from 'url';  // __dirname no esta disponible con ES Modules
+import { fileURLToPath } from 'url';  
+import  CalculadoraTransporte  from './services/CalculadoraTransporte.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -64,6 +65,33 @@ app.post('/registro', (req, res) => {
      
 });
 
+//=========================================================================================================================
+
+app.get('/calculadoraTte', (req, res) => {      // arranca la HTML  .ejs donde esta el formulario
+    res.render ('calculadoraTransporte.ejs')
+})
+
+app.post('/calculadoraTte', (req, res) => {
+
+    const {distancia, peso, tipo_transporte} = req.body; // recibe los datos del formulario de la HTML  .ejs
+    const calculadora = new CalculadoraTransporte (distancia,peso,tipo_transporte); // instancia la clase CalculadoraTransporte.js
+    const resultado = calculadora.calcularCoste (); // asignamos a una variable resultado el calculo del metodo calcularCoste
+
+    //console.log(distancia,peso,tipo_transporte);
+    //console.log(resultado)
+
+    res.render ('calculadoraTransporte.ejs', {resultado}); // enviamos los datos a la HTML .ejs
+
+})
+
+//========================================================================================================
+
+
+
+
+
+
+
 
 app.use((req, res) => {
     res.status(404).send('Error pagina no existe')
@@ -72,3 +100,9 @@ app.use((req, res) => {
 app.listen(3000, () => {
     console.log('Server running on http://localhost:3000');
 });
+
+
+
+
+
+

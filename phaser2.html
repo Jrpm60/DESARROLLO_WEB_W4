@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phaser Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+</head>
+<body>
+    <script type="module">
+
+        const config = {
+            type: Phaser.AUTO,
+            width: 800,
+            height: 600,
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: { y: 0 },
+                    debug: false
+                }
+            },
+            scene: {
+                preload: preload,
+                create: create,
+                update: update
+            }
+        };
+
+        const game = new Phaser.Game(config);
+
+        function preload() {
+            this.load.image('sky', 'https://labs.phaser.io/assets/skies/space3.png');
+            this.load.image('character', 'https://labs.phaser.io/assets/sprites/phaser-dude.png');
+            this.load.image('enemy', 'https://labs.phaser.io/assets/sprites/diamond.png');
+        }
+
+        function create() {
+            this.add.image(400, 300, 'sky');
+
+            this.player = this.physics.add.sprite(400, 500, 'character');
+            this.player.setCollideWorldBounds(true);
+
+            this.enemies = this.physics.add.group({
+                key: 'enemy',
+                repeat: 5,
+                setXY: { x: 100, y: 100, stepX: 150 }
+            });
+
+            this.enemies.children.iterate(function(enemy) {
+                enemy.setX(Phaser.Math.Between(100, 700));
+                enemy.setY(Phaser.Math.Between(50, 300));
+
+                const horizontalSpeed = Phaser.Math.Between(-100, 100);
+                enemy.setVelocityX(horizontalSpeed);
+                enemy.setVelocityY(0);
+                enemy.setCollideWorldBounds(true);
+                enemy.setBounce(1, 0);
+            });
+
+            this.score = 0;
+
+            this.scoreText = this.add.text(16, 16, 'Score: 0', {
+                fontSize: '32px',
+                fill: '#fff'
+            });
+        }
+
+        function update() {
+            // Mueve el jugador con el ratón
+            const pointer = this.input.activePointer;
+            this.player.setPosition(pointer.x, pointer.y);
+
+            this.physics.overlap(this.player, this.enemies, hitEnemy, null, this);
+
+            this.scoreText.setText('Score: ' + this.score);
+        }
+
+        function hitEnemy(player, enemy) {
+            this.score += 1;
+            enemy.setX(Phaser.Math.Between(100, 700));
+            enemy.setY(Phaser.Math.Between(50, 300));
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Transporte</title>
+</head>
+<body>
+    <h1>Calculadora de Transporte</h1>
+
+    <form action="/calculadoraTte" method="POST">
+
+        <label for="distancia">Distancia (km):</label>
+        <input type="number" id="distancia" name="distancia"><br><br>
+
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" name="peso"><br><br>
+
+        <label for="tipo_transporte">Tipo de Transporte:</label>
+        <select id="tipo_transporte" name="tipo_transporte">
+            <option value="patin">Patín</option>
+            <option value="bicicleta">Bicicleta</option>
+        </select><br><br>
+
+        <button type="submit">Calcular Coste</button><br><br>
+    </form>
+
+    <div id="resultado">
+        
+        <% if (resultado) { %>
+            <p style ="color: red" ;>El coste es <%= resultado%> euros </p> 
+        <% } %>
+
+    </div>
+
+</body>
+</html>
