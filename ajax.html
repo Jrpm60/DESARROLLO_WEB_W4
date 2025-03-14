@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Button Example (XMLHttpRequest)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #content {
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AJAX Button Example (XMLHttpRequest)</h1>
+    <input type="number" id="number">
+    <button id="loadButton">Load User</button>
+    <div id="content"></div>
+    
+    <script>
+        document.getElementById('loadButton').addEventListener('click', function() {
+            // Create a new XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+            
+            // Configure the request
+
+            var data = document.getElementById('number').value;
+            console.log(data);
+            var peticion = 'https://jsonplaceholder.typicode.com/users'+'/'+data;
+            console.log(peticion);
+            xhr.open('GET', peticion , true);
+            
+            // Set up the callback function that will be called once the request is complete
+
+            xhr.onload = function() {
+                if (xhr.status === 200) { // If the request is successful
+                    const data = JSON.parse(xhr.responseText); // Parse the response data to JSON
+                    let htmlContent = '';
+                    // Enseñando data and create HTML content
+                    
+                        htmlContent += `
+                            <div class="post">
+                                <h3>${data.name}</h3>
+                                <p>${data.email}</p>
+                                <p>${data.phone}</p>
+                            </div>
+                        `;
+                    
+                    // Insert the HTML content into the 'content' div
+                    document.getElementById('content').innerHTML = htmlContent;
+                } else {
+                    // If there's an error, display an error message
+                    console.error('Error fetching data:', xhr.status);
+                    document.getElementById('content').innerHTML = 'Error loading posts.';
+                }
+            };
+            
+            // Handle errors in the request
+            xhr.onerror = function() {
+                console.error('Request failed');
+                document.getElementById('content').innerHTML = 'Error loading posts.';
+            };
+            
+            // Send the request
+            xhr.send();
+        });
+    </script>
+
+</body>
+</html>
